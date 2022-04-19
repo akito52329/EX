@@ -139,8 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\EX04\GetVolumeSurface.cpp" />
     <ClCompile Include="EX04.cpp" />
+    <ClCompile Include="GetVolumeSurface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GetVolumeSurface.h" />

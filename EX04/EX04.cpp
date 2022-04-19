@@ -1,17 +1,17 @@
-ï»¿#include <iostream>
-#include "GetVolumeSurface.h"
+#include <iostream>
+#include "getVolumeSurface.h"
 using namespace std;
 
-int main(double) {
+int main() {
 	double x, y, z;
-	cout << "å¹…ã‚’å…¥åŠ›:";
+	cout << "•‚ð“ü—Í:";
 	cin >> x;
-	cout << "é«˜ã•ã‚’å…¥åŠ›:";
+	cout << "‚‚³‚ð“ü—Í:";
 	cin >> y;
-	cout << "å¥¥è¡Œã‚’å…¥åŠ›:";
+	cout << "‰œs‚ð“ü—Í:";
 	cin >> z;
 	double volume, surface;
-	volume = GetVolumeSurface(x, y, z, surface);
-	cout << "ä½“ç©ã¯ã€" << volume << endl << "è¡¨é¢ç©ã¯ã€" << surface << endl;
+	volume = GetVolumeSurface(x, y, z, &surface);
+	cout << "‘ÌÏ‚ÍA" << volume << endl << "•\–ÊÏ‚ÍA" << surface << endl;
 	return 0;
 }

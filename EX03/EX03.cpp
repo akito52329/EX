@@ -29,7 +29,7 @@ int main()
 	double weight;//体重
 	double bmi;//BMI
 	int obesitDrees;//肥満度
-	string obesit;//肥満度文字
+
 	cout << "身長(㎝)で入力してください：";
 	cin >> height;
 
@@ -38,10 +38,9 @@ int main()
 
 	bmi = GetBmi(height, weight);
 	obesitDrees = GetObesit(bmi);
-	obesit = Obesit(obesitDrees);
 	
 	cout << "あなたのBMIは" << fixed << setprecision(1) << bmi << "です" << endl;
-	cout << "肥満度は" << obesit << "です。" << endl;
+	cout << "肥満度は" << Obesit(obesitDrees) << "です。" << endl;
 	return 0;
 }
 

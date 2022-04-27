@@ -2,7 +2,8 @@
 
 bool isSendable(BOX* box)
 {
-	int sizeCeiteria[] = { 60,80,100,120,140,160,180,200 };//サイズの基準
+	const int MAX_COUNT = 8;
+	int sizeCeiteria[] = { 200,180,160,140,120,100,80,60 };//サイズの基準
 	int size;
 	size = box->x + box->y + box->z;
 
@@ -43,5 +44,5 @@ bool isSendable(BOX* box)
 		box->packSize = 201;
 	}
 
-	return box->packSize <= sizeCeiteria[7];
+	return box->packSize <= sizeCeiteria[0];
 }

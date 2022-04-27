@@ -40,7 +40,7 @@ bool isSendable(BOX* box)
 	}
 	else
 	{
-		box->packSize = 0;
+		box->packSize = 201;
 	}
 
 	return box->packSize <= sizeCeiteria[7];

@@ -17,6 +17,15 @@ int main()
 		getVolumeSurface(&boxes[i]);
 		cout << "体積は" << boxes[i].volume << endl;
 		cout << "表面積は" << boxes[i].surface << endl;
+		if (isSendable(&boxes[i]))
+		{
+			cout << boxes[i].packSize << "サイズで送れます。" << endl;
+		}
+		else
+		{
+			cout << "宅急便は送れません。" << endl;
+		}
+		
 	}
 	return 0;
 }

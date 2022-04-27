@@ -4,6 +4,9 @@ struct BOX {	//箱の定義
 	double z;	//奥行
 	double volume;	//体積
 	double surface; //表面積
+	double packSize; //送れる宅急便のサイズ
 };
+
+bool isSendable(BOX* box);
 
 void getVolumeSurface(BOX* box);

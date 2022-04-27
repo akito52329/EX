@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="EX05.cpp" />
     <ClCompile Include="getVolumeSurface.cpp" />
+    <ClCompile Include="isSendable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="getVolumeSurface.h" />

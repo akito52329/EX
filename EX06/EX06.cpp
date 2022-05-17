@@ -102,7 +102,7 @@ public:
 
 	double GetSurface()
 	{
-		return (radius * M_PI) * (sqrt(radius * radius + height * height) * (radius));
+		return (radius * M_PI) * (sqrt(radius * radius + height * height) * radius);
 	}
 
 };

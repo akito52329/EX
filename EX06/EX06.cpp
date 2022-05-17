@@ -124,7 +124,7 @@ public:
 
 	double GetVolume()
 	{
-		return radius * radius * M_PI * 4 / 3;
+		return radius * radius * radius * M_PI * 4 / 3;
 	}
 
 	double GetSurface()

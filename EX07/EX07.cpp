@@ -230,3 +230,8 @@ int main()
 
 	}
 }
+
+string Solid::GetName()
+{
+	return string();
+}

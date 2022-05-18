@@ -12,9 +12,11 @@ class Solid
 public:
 	virtual double GetVolume() = 0;
 	virtual double GetSurface() = 0;
+	virtual double GetPackageLength() = 0;
+
 };
 
-class Box : Solid
+class Box : public Solid
 {
 private:
 	double width;
@@ -45,9 +47,14 @@ public:
 		return (width * height + height * depth + width * depth) * 2;
 	}
 
+	double GetPackageLength()
+	{
+		return this->width + this->height + this->depth;
+	}
+
 };
 
-class Cylinder : Solid
+class Cylinder : public Solid
 {
 private:
 	double radius;
@@ -75,9 +82,14 @@ public:
 		return (radius * radius * M_PI * 2) + (radius * 2 * M_PI * height);
 	}
 
+	double GetPackageLength()
+	{
+		return this->radius * 4 + this->height;
+	}
+
 };
 
-class Cone : Solid
+class Cone : public Solid
 {
 private:
 	double radius;
@@ -105,9 +117,13 @@ public:
 		return (radius * M_PI) * (sqrt(radius * radius + height * height) * radius);
 	}
 
+	double GetPackageLength()
+	{
+		return this->radius * 4 + this->height;
+	}
 };
 
-class Sphere : Solid
+class Sphere : public Solid
 {
 private:
 	double radius;
@@ -132,56 +148,52 @@ public:
 		return radius * radius * M_PI * 4;
 	}
 
+	double GetPackageLength()
+	{
+		return this->radius * 6;
+	}
 };
 
-class Package
+
+
+void DisplayVolumeSurface(Solid* solid)
 {
-private:
-	double width;
-	double height;
-	double depth;
+	cout << "体積:" <<solid -> GetVolume() << "表面積:" << solid->GetSurface() << endl;
+}
 
-public:
+void GetPacckage(double length)
+{
+	int kuronekoSize[] = { 60,80,100,120,140,160,180,200 };
+	int i;
+	int packageSize = 0;
 
-	Package(double width, double height, double depth)
-	{
-		this->width = width;
-		this->height = height;
-		this->depth = depth;
-	}
-
-	double Size()
-	{
-		const int MAX_COUNT = 8;
-		int sizeCeiteria[] = { 200,180,160,140,120,100,80,60 };//サイズの基準
-		int size;
-		int packSize;
-		int overSize = 201;
-		size = width + height + depth;
-
-		packSize = overSize;
-		for (int i = 0; i < MAX_COUNT; i++)
-		{
-
-			if (size <= sizeCeiteria[i])
-			{
-				packSize = sizeCeiteria[i];
-			}
+	for (i = 0; i < _countof(kuronekoSize); i++) {
+		if (length <= kuronekoSize[i]) {
+			break;
 		}
-		return packSize;
 	}
-};
+	if (i < _countof(kuronekoSize)) {
+		cout << "箱のサイズは" << kuronekoSize[i] << "サイズです" << endl;
+	}
+	else {
+		cout << "この箱は宅急便では送れません" << endl;
+	}
+}
 
 
 int main()
 {
-	Box box(0.5, 5, 2);
-	Cylinder cylinder(2, 2);
-	Cone cone(2, 3);
-	Sphere sphere(2);
+	Box box(10, 5, 2);
+	Cylinder cylinder(50, 2);
+	Cone cone(2, 100);
+	Sphere sphere(9);
 
-	cout << "Box　体積:" << box.GetVolume() << "表面積:" << box.GetSurface() << endl;
-	cout << "円柱　体積:" << cylinder.GetVolume() << "表面積:" << cylinder.GetSurface() << endl;
-	cout << "円錐　体積:" << cone.GetVolume() << "表面積:" << cone.GetSurface() << endl;
-	cout << "球　体積:" << sphere.GetVolume() << "表面積:" << sphere.GetSurface() << endl;
+	const int TABLE = 4;
+	Solid* solid[TABLE] = {&box,&cylinder,&cone,&sphere};
+	for (int i = 0; i < TABLE; i++)
+	{
+		DisplayVolumeSurface(solid[i]);
+		GetPacckage(solid[i]->GetPackageLength());
+	}
 }
+

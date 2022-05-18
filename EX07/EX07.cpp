@@ -190,14 +190,16 @@ public:
 
 void DisplayVolumeSurface(Solid* solid)
 {
-	cout << "‘ÌÏ:" <<solid -> GetVolume() << "•\–ÊÏ:" << solid->GetSurface() << endl;
+	cout << solid->GetName() << "¨‘ÌÏ:" << solid->GetVolume() << "•\–ÊÏ:" << solid->GetSurface() << endl;
 }
 
-void GetPacckage(double length, string name)
+void GetPacckage(Solid* solid)
 {
 	int kuronekoSize[] = { 60,80,100,120,140,160,180,200 };
 	int i;
 	int packageSize = 0;
+	double length = solid->GetPackageLength();
+	string name = solid->GetName();
 
 	for (i = 0; i < _countof(kuronekoSize); i++) {
 		if (length <= kuronekoSize[i]) {
@@ -210,7 +212,6 @@ void GetPacckage(double length, string name)
 	else {
 		cout << "‚±‚Ì"<< name <<"” ‚Í‘î‹}•Ö‚Å‚Í‘—‚ê‚Ü‚¹‚ñ" << endl;
 	}
-
 }
 
 
@@ -226,8 +227,7 @@ int main()
 	for (int i = 0; i < TABLE; i++)
 	{
 		DisplayVolumeSurface(solid[i]);
-		GetPacckage(solid[i]->GetPackageLength(), solid[i]->GetName());
-
+		GetPacckage(solid[i]);
 	}
 }
 

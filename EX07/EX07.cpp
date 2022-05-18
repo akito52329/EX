@@ -173,10 +173,10 @@ void GetPacckage(double length)
 		}
 	}
 	if (i < _countof(kuronekoSize)) {
-		cout << "箱のサイズは" << kuronekoSize[i] << "サイズです" << endl;
+		cout << "サイズは" << kuronekoSize[i] << "サイズです" << endl;
 	}
 	else {
-		cout << "この箱は宅急便では送れません" << endl;
+		cout << "宅急便では送れません" << endl;
 	}
 }
 

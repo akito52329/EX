@@ -13,7 +13,7 @@ public:
 	virtual double GetVolume() = 0;
 	virtual double GetSurface() = 0;
 	virtual double GetPackageLength() = 0;
-	virtual string GetName();
+	virtual string GetName() = NULL;
 };
 
 class Box : public Solid
@@ -229,9 +229,4 @@ int main()
 		DisplayVolumeSurface(solid[i]);
 		GetPacckage(solid[i]);
 	}
-}
-
-string Solid::GetName()
-{
-	return string();
 }

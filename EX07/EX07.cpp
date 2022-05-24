@@ -13,7 +13,6 @@ public:
 	virtual double GetVolume() = 0;
 	virtual double GetSurface() = 0;
 	virtual double GetPackageLength() = 0;
-	virtual string GetName() = NULL;
 };
 
 class Box : public Solid
@@ -22,7 +21,6 @@ private:
 	double width;
 	double height;
 	double depth;
-	string name;
 
 public:
 	/// <summary>
@@ -32,12 +30,11 @@ public:
 	/// <param name="height">高さ</param>
 	/// <param name="depth">奥行</param>
 	/// <param name="name">物体の名前</param>
-	Box(double width, double height, double depth , string name)
+	Box(double width, double height, double depth )
 	{
 		this->width = width;
 		this->height = height;
 		this->depth = depth;
-		this->name = name;
 	}
 
 	double GetVolume()
@@ -55,10 +52,6 @@ public:
 		return this->width + this->height + this->depth;
 	}
 
-	string GetName()
-	{
-		return this->name;
-	}
 };
 
 class Cylinder : public Solid
@@ -66,7 +59,6 @@ class Cylinder : public Solid
 private:
 	double radius;
 	double height;
-	string name;
 
 public:
 	/// <summary>
@@ -75,11 +67,10 @@ public:
 	/// <param name="radius">半径</param>
 	/// <param name="height">高さ</param>
 	/// <param name="name">物体の名前</param>
-	Cylinder(double radius, double height, string name)
+	Cylinder(double radius, double height)
 	{
 		this->radius = radius;
 		this->height = height;
-		this->name = name;
 	}
 
 	double GetVolume()
@@ -97,10 +88,6 @@ public:
 		return this->radius * 4 + this->height;
 	}
 
-	string GetName()
-	{
-		return this->name;
-	}
 
 };
 
@@ -118,7 +105,7 @@ public:
 	/// <param name="radius">半径</param>
 	/// <param name="height">高さ</param>
 	/// <param name="name">物体の名前</param>
-	Cone(double radius, double height, string name)
+	Cone(double radius, double height)
 	{
 		this->radius = radius;
 		this->height = height;
@@ -140,17 +127,12 @@ public:
 		return this->radius * 4 + this->height;
 	}
 
-	string GetName()
-	{
-		return this->name;
-	}
 };
 
 class Sphere : public Solid
 {
 private:
 	double radius;
-	string name;
 
 
 public:
@@ -159,10 +141,9 @@ public:
 	/// </summary>
 	/// <param name="radius">半径</param>
 	/// <param name="name">物体の名前</param>
-	Sphere(double radius , string name)
+	Sphere(double radius )
 	{
 		this->radius = radius;
-		this->name = name;
 	}
 
 	double GetVolume()
@@ -180,17 +161,13 @@ public:
 		return this->radius * 6;
 	}
 
-	string GetName()
-	{
-		return this->name;
-	}
 };
 
 
 
 void DisplayVolumeSurface(Solid* solid)
 {
-	cout << solid->GetName() << "→体積:" << solid->GetVolume() << "表面積:" << solid->GetSurface() << endl;
+	cout << "体積:" << solid->GetVolume() << "表面積 : " << solid->GetSurface() << endl;
 }
 
 void GetPacckage(Solid* solid)
@@ -199,7 +176,6 @@ void GetPacckage(Solid* solid)
 	int i;
 	int packageSize = 0;
 	double length = solid->GetPackageLength();
-	string name = solid->GetName();
 
 	for (i = 0; i < _countof(kuronekoSize); i++) {
 		if (length <= kuronekoSize[i]) {
@@ -207,20 +183,20 @@ void GetPacckage(Solid* solid)
 		}
 	}
 	if (i < _countof(kuronekoSize)) {
-		cout << name << "のサイズは" << kuronekoSize[i] << "サイズです" << endl;
+		cout << "サイズは" << kuronekoSize[i] << "サイズです" << endl;
 	}
 	else {
-		cout << "この"<< name <<"箱は宅急便では送れません" << endl;
+		cout << "これ宅急便では送れません" << endl;
 	}
 }
 
 
 int main()
 {
-	Box box(10, 5, 2 , "箱");
-	Cylinder cylinder(2, 2, "円柱");
-	Cone cone(50, 100, "円錐");
-	Sphere sphere(9, "球");
+	Box box(10, 5, 2);
+	Cylinder cylinder(2, 2);
+	Cone cone(50, 100);
+	Sphere sphere(9);
 
 	const int TABLE = 4;
 	Solid* solid[TABLE] = {&box,&cylinder,&cone,&sphere};

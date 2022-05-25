@@ -20,7 +20,7 @@ public:
 	}
 	const char* GetName() 
 	{
-		return name->data();;
+		return name->data();
 	}
 	~Solid() 
 	{

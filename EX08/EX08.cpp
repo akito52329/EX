@@ -17,9 +17,9 @@ public:
 template <class T> class Box : public Solid <T>
 {
 private:
-	double width;
-	double height;
-	double depth;
+	T width;
+	T height;
+	T depth;
 
 public:
 	/// <summary>
@@ -28,7 +28,7 @@ public:
 	/// <param name="width">幅</param>
 	/// <param name="height">高さ</param>
 	/// <param name="depth">奥行</param>
-	Box(double width, double height, double depth)
+	Box(T width, T height, T depth)
 	{
 		this->width = width;
 		this->height = height;
@@ -50,8 +50,8 @@ public:
 template <class T> class Cylinder : public Solid <T>
 {
 private:
-	double radius;
-	double height;
+	T radius;
+	T height;
 
 public:
 	/// <summary>
@@ -59,7 +59,7 @@ public:
 	/// </summary>
 	/// <param name="radius">半径</param>
 	/// <param name="height">高さ</param>
-	Cylinder(double radius, double height)
+	Cylinder(T radius, T height)
 	{
 		this->radius = radius;
 		this->height = height;
@@ -80,8 +80,8 @@ public:
 template <class T> class Cone : public Solid <T>
 {
 private:
-	double radius;
-	double height;
+	T radius;
+	T height;
 
 public:
 	/// <summary>
@@ -89,7 +89,7 @@ public:
 	/// </summary>
 	/// <param name="radius">半径</param>
 	/// <param name="height">高さ</param>
-	Cone(double radius, double height)
+	Cone(T radius, T height)
 	{
 		this->radius = radius;
 		this->height = height;
@@ -110,14 +110,14 @@ public:
 template <class T> class Sphere : public Solid <T>
 {
 private:
-	double radius;
+	T radius;
 
 public:
 	/// <summary>
 	/// 球のコンストラクタ
 	/// </summary>
 	/// <param name="radius">半径</param>
-	Sphere(double radius)
+	Sphere(T radius)
 	{
 		this->radius = radius;
 	}
@@ -137,8 +137,8 @@ public:
 int main()
 {
 	Box<double> box(0.5, 5, 2);
-	Cylinder<double> cylinder(2, 2);
-	Cone<double> cone(2, 3);
+	Cylinder<int> cylinder(2, 2);
+	Cone<float> cone(2, 3);
 	Sphere<double> sphere(2);
 
 	cout << "Box　体積:" << box.GetVolume() << "表面積:" << box.GetSurface() << endl;
